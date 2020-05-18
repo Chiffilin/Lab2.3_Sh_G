@@ -8,3 +8,5 @@ Lab2.3
 Lab2 Задание 3
 
  Функция вычисляет площадь треугольника по трем сторонам S=Sqrt(p*(p-a)*(p-b)*(p-c)) , где р = (a + b + с) / 2. 
+ 
+ Lab 4: Добавить openFileDialog && saveFileDialog1
