@@ -19,6 +19,8 @@ namespace WindowsFormsApp7
             InitializeComponent();
             triangle = new Triangle();
             isSecondNumber = false;
+            openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*|Bitmap files(*.bmp)|*.bmp|Binary files(*.bin)|*.bin";
+            saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*|Bitmap files(*.bmp)|*.bmp|Binary files(*.bin)|*.bin";
         }
 
         public void AddDigit(String digit)
@@ -68,8 +70,31 @@ namespace WindowsFormsApp7
             Answer.Text = " ";
         }
 
-        
+        private void Open_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = openFileDialog1.FileName;
+            // читаем файл в строку
+            string fileText = System.IO.File.ReadAllText(filename);
 
-       
+            Answer.Text = fileText;
+            MessageBox.Show("Файл открыт");
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = saveFileDialog1.FileName;
+            // сохраняем текст в файл
+
+          
+           
+            System.IO.File.WriteAllText(filename, Answer.Text);
+            MessageBox.Show("Файл сохранен");
+        }
     }
 }
